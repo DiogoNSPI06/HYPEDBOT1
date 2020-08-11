@@ -1,20 +1,20 @@
 const Discord = require('discord.js');
 
 const items = [{
-        question: 'Quais foram os criadores do grupo?',
-        answer: ['Sasuke', 'Jaum', 'Vitagliano'],
+        question: 'Quais foram os criadores do HYPED?',
+        answer: ['Diogo06 e kawan'],
     },
     {
-        question: 'Qual o nome do principal bot do grupo?',
-        answer: ['Segurança'],
+        question: 'Qual o nome do principal bot do servidor?',
+        answer: ['HYPED'],
     },
     {
-        question: 'Quando o Elite dos Desenvolvedores foi criado?',
-        answer: ['13 de Setembro de 2019'],
+        question: 'Quando o servidor HYPED foi crido?',
+        answer: ['19 de julho de 2020'],
     },
     {
         question: 'Qual o jogo mais jogado pela galera do grupo? ',
-        answer: ['Krunker'],
+        answer: ['Minecraft'],
     },
 ];
 

@@ -1,49 +1,42 @@
-const Discord = require('discord.js');
+const Discord = require('discord.js')
 
-exports.run = async (client, message) => { // eslint-disable-line no-unused-vars
-
-    if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send(`${message.author}, você não possui permissão para executar esse comando.`).then(msg => msg.delete(8000))
+exports.run = async (bot, message) => { 
+  if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("VOCÊ NÃO É ADM!")
     try {
-        let output = '';
-        let i = 0;
-
-        message.channel.send(`Você quer receber a lista de bans? Reaja com ✅ para confirmar o envio. `)
-            .then(async (msg) => {
-                await msg.react("✅")
-                await msg.react("⏹")
-                const filter = (reaction, user) => ['✅', '⏹'].includes(reaction.emoji.name) && user.id === message.author.id
-                const collector = msg.createReactionCollector(filter)
-                collector.on("collect", r => {
-
-                    switch (r.emoji.name) {
-                        case '✅':
-
-                            msg.reactions.map(re => re.remove(client.user))
-                            message.guild.fetchBans().then(async (bans) => {
-                                message.channel.send('Enviei a lista de bans no seu privado!');
-
-                                bans.forEach(async (ban) => {
-                                    i++;
-                                    await message.author.send(i + '. **Nome:** ' + ban.tag + ' | **ID:** ' + ban.id + '');
-                                });
-
-                            });
-                            break;
-                        case '⏹':
-                            msg.reactions.map(re => re.remove(client.user))
-                            msg.delete().then(message.channel.send(`O envio foi cancelado.`));
-                            break;
-                    }
-                })
-            })
-
-
+      let output = '';
+        let i = 0
+          
+        message.channel.send(`Você quer receber a lista de bans? Reaja com ✅ para confirmar o envio.`)
+              .then(async (msg) => {
+          await msg.react("✅")
+          await msg.react("⏹")
+            const filtro = (reaction, user) => ['✅', '⏹'].includes(reaction.emoji.name) && user.id === message.author.id
+              const coletor = msg.createReactionCollector(filtro)
+              
+              coletor.on("collect", r => {
+                
+                switch (r.emoji.name) {
+                  case '✅':
+                    
+                    msg.reactions.removeAll
+                    message.guild.fetchBans().then(async (bans) => {
+                     message.channel.send('Enviei a lista de bans no seu privado! \n(Caso não receba nenhuma mensagem no privado significa que não tem ninguem banido!)');
+                      bans.forEach(async (ban) => {
+                        i++;
+                          
+                          await message.author.send(i+ '.**Nome:**' + ban.user.username + ' | **ID:** ' + ban.user.id + ' | **bot:**' + ban.user.bot + '');
+                      
+                      })
+                    })
+                     break;
+                    case '⏹': 
+                     msg.reactions.removeAll
+                    msg.delete().then(message.channel.send(`O envio foi cancelado.`));
+                    break;
+                } 
+              })
+        })
     } catch (err) {
-        message.channel.send('Um erro aconteceu!\n' + err).catch();
+      message.channel.send('Um erro aconteceu! \n' + err).catch();
     }
-};
-
-
-exports.help = {
-    name: 'listbans'
-};
+}
