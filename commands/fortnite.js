@@ -14,7 +14,7 @@ exports.run = (client, message, args) => {
 
       if (!razaod.length < 1) {
         fortnite.user(`${args[1]}`, plataforma).then(usuario => {
-          message.channel.sendMessage({
+          message.channel.send({
             'embed': {
               'color': 'RANDOM',
               'timestamp': new Date(),
@@ -63,16 +63,16 @@ exports.run = (client, message, args) => {
             }
           })
         }).catch(err => {
-          message.channel.sendMessage(':x: **Usuário não encontrado.**')
+          message.channel.send(':x: **Usuário não encontrado.**')
         })
       } else {
-        message.channel.sendMessage(':x: **Diga o username da conta.**')
+        message.channel.send(':x: **Diga o username da conta.**')
       }
     } else {
-      message.channel.sendMessage(`:x: **Plataforma inválida:** \`${plataformas.join('` **|** `')}\``)
+      message.channel.send(`:x: **Plataforma inválida:** \`${plataformas.join('` **|** `')}\``)
     }
   } else {
-    message.channel.sendMessage(':x: **Diga a plataforma da conta.**')
+    message.channel.send(':x: **Diga a plataforma da conta.**')
   }
 }
 

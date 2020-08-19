@@ -25,7 +25,6 @@ module.exports.run = async (client, message, args) => {
         .setDescription(`Para saber meus comandos, reaja ao emoji de cada categoria!
         E Meu Prefixo é "h!"`)
         .addField(`⭐ **Informações**`, '• `ajuda`, `server`, `user`, `sugerir`, `avatar`...')
-        .addField(`📥 **Pedidos**`, '• `plugin`, `web`, `outros`...')
         .addField(`👦 **Usuário**`, '• `portfolio`, `recomendações`, `reputação`...')
         .addField(`😂 **Diversão**`, '• `lenny`, `coinflip`, `dados`...')
         .addField(`🔧 **Staff**`, '• `ban`, `mute`, `chat`, `limpar`...')
@@ -34,7 +33,6 @@ module.exports.run = async (client, message, args) => {
         .setColor('RANDOM')
     message.author.send(embed).catch(err => message.channel.send(erros)).then(async msg => {
         await msg.react('⭐')
-        await msg.react('📥')
         await msg.react('👦')
         await msg.react('😂')
         await msg.react('🔧')
@@ -42,19 +40,15 @@ module.exports.run = async (client, message, args) => {
 
 
         const informacao = (reaction, user) => reaction.emoji.name === '⭐' && user.id === message.author.id;
-        const pedidos = (reaction, user) => reaction.emoji.name === '📥' && user.id === message.author.id;
         const usuario = (reaction, user) => reaction.emoji.name === '👦' && user.id === message.author.id;
         const diversao = (reaction, user) => reaction.emoji.name === '😂' && user.id === message.author.id;
-        const musica = (reaction, user) => reaction.emoji.name === '🎶' && user.id === message.author.id;
         const staff = (reaction, user) => reaction.emoji.name === '🔧' && user.id === message.author.id;
 
         const back = (reaction, user) => reaction.emoji.name === "↩" && user.id === message.author.id;
 
         const informacaoL = msg.createReactionCollector(informacao)
         const usuarioL = msg.createReactionCollector(usuario)
-        const pedidosL = msg.createReactionCollector(pedidos)
         const diversaoL = msg.createReactionCollector(diversao)
-        const musicaL = msg.createReactionCollector(musica)
         const staffL = msg.createReactionCollector(staff)
 
         const backL = msg.createReactionCollector(back)
@@ -65,7 +59,6 @@ module.exports.run = async (client, message, args) => {
                 .setAuthor(`${message.guild.name} - Ajuda`)
                 .setDescription(`Para saber meus comandos, reaja ao emoji de cada categoria.`)
                 .addField(`⭐ **Informações**`, '• `ajuda`, `server`, `user`, `sugerir`, `avatar`, ...')
-                .addField(`📥 **Pedidos**`, '• `plugin`, `web`, `outros`')
                 .addField(`👦 **Usuário**`, '• `portfolio`, `recomendações`, `reputação`...')
                 .addField(`😂 **Diversão**`, '• `lenny`, `coinflip`, `dados`...')
                 .addField(`🔧 **Staff**`, '• `ban`, `mute`, `chat`, `limpar`...')
@@ -86,6 +79,7 @@ module.exports.run = async (client, message, args) => {
                 h!lembrete \`<tempo>\` \`<lembrete>\` - Te lembra de algo importante.
                 h!ping - Mostra o delay bot-servidor.
                 h!imgur \`<img>\` - Faz upload de uma imagem para o Imgur.
+                h!invites - quantidade de invites de cada pessoa!
                 h!verificar - Se verifica para a staff.
                 h!bot - Repositório do BOT
                 h!invitebot - Me adicione em seu servidor!
@@ -99,28 +93,12 @@ module.exports.run = async (client, message, args) => {
             msg.edit(embedinformacao)
         })
 
-        pedidosL.on('collect', r => {
-
-            const embedpedidos = new Discord.MessageEmbed()
-                .setAuthor(`${message.guild.name} - Ajuda`)
-                .setDescription(`📥 **PEDIDOS**
-
-                h!plugin - Faça um pedido relacionado a plugins!
-                h!web - Faça um pedido relacionado a web!
-                h!outros - Faça um pedido de algo não listado!
-         `)
-                .setColor("RANDOM")
-                .setFooter(message.author.tag, message.author.avatarURL)
-                .setTimestamp()
-            msg.edit(embedpedidos)
-        })
-
         usuarioL.on('collect', r => {
             const embedusuario = new Discord.MessageEmbed()
                 .setAuthor(`${message.guild.name} - Ajuda`)
                 .setDescription(`👦 **USUARIO**
-                        
-                h!apresentar - Apresente-se em nosso servidor.
+                
+                h!fortinte
                 h!recomendações - Mostra seus pontos de recomendação.
                 h!recomendar - \`<@user>\` - Recomende um usuário.
 
@@ -140,6 +118,8 @@ module.exports.run = async (client, message, args) => {
                 h!coinflip - Joga moeda para cima.
                 h!random - Mostra aleatoriamente um número.
                 h!say \`<mensagem>\` - Faz com que eu repita uma frase.
+                h!bigtext - <mensagem> Faz uma mensagem com letras grandes !
+                h!reverse - Inverte sua mensagem !
                 h!lenny - Aquela carinha. ( ͡ʘ ͜ʖ ͡ʘ)
                 h!guess - Acerte o número aleatório em 10 tentativas.
                 h!8ball \`<mensagem>\` - Responde suas perguntas.
@@ -156,13 +136,12 @@ module.exports.run = async (client, message, args) => {
             msg.edit(embeddiversao)
         })
 
-
         staffL.on('collect', r => {
             const embeddiversao = new Discord.MessageEmbed()
                 .setAuthor(`${message.guild.name} - Ajuda`)
                 .setDescription(`🔧 **Staff**
 
-                h!clear <1-99>- Limpa as mensagens!
+                h!clear ou h!limpar <1-99>- Limpa as mensagens!
                 h!warn - Avisa um usuário.
                 h!denunciar - Denuncia um mebro       
                 h!ban \`<usuário>\` \`<razão>\` - Bane um usuário.

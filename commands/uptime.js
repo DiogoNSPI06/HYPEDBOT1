@@ -12,8 +12,8 @@ module.exports.run = async (client, message, args) => {
 
   const embed = new Discord.MessageEmbed()
     .setTitle(`Tempo de atividade 🕰️`)
-    .setThumbnail("https://imgur.com/WZMylbw.gif")
-    .setColor("#FF0000")
+    .setThumbnail("https://imgur.com/EbpE2zx.gif")
+    .setColor("RANDOM")
     .setDescription(`**Estou online há:**\n${uptime}`)
     .setFooter(`© Código de ! Diogo06™#2369`)
 

@@ -15,11 +15,11 @@ if (!args[0]) {
     .setColor("RANDOM")
     .addField("Autor:", message.author)
     .addField("Conteúdo", content)
-    .setFooter("ID do Autor: " + message.author.id)
+    .setFooter("© Servidor HYPED")
     .setTimestamp()
   );
 
-  const emojis = ["✔️", "❎"];
+  const emojis = ["✅", "❌"];
 
   for (const i in emojis) {
     await msg.react(emojis[i])

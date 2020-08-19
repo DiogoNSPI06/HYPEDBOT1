@@ -4,7 +4,7 @@ const superagent = require("superagent");
 exports.run = async (bot, message, args) => {
 
     let{body} = await superagent
-  .get(`http://aws.random.cat/meow`);
+  .get(`http://www.randomkittengenerator.com/`);
 
   let catembed = new Discord.MessageEmbed()
   .setColor("RANDOM")

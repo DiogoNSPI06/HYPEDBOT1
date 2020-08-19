@@ -17,12 +17,12 @@ client.on("guildMemberAdd", async (member) => {
 
   let guild = await client.guilds.cache.get("734227709445799989");
   let channel = await client.channels.cache.get("734230751251399391");
-  let emoji = await member.guild.emojis.cache.find(emoji => emoji.name === ":heart:");
+  let emoji = await member.guild.emojis.cache.find(emoji => emoji.name === "");
   if (guild != member.guild) {
     return console.log("Sem boas-vindas pra você! Sai daqui pela saco.");
    } else {
       let embed = await new Discord.MessageEmbed()
-      .setColor("#7c2ae8")
+      .setColor("RANDOM")
       .setAuthor(member.user.tag, member.user.displayAvatarURL())
       .setTitle(` Boas-vindas `)
       .setDescription(`**${member.user}**, bem-vindo(a) ao servidor **${guild.name}**! Atualmente estamos com **${member.guild.memberCount} membros**, divirta-se conosco! :heart:`)

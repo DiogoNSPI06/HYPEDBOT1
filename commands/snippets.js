@@ -8,7 +8,7 @@ exports.run = async (client, message, args) => {
     message.delete()
     message.channel.send(`${message.author}, informações para o envio do seu snippet foram enviadas a sua DM.`).then(msg => msg.delete(5000))
 
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
         .setColor(c.cor)
         .setAuthor("EdD - Snippet de código", client.user.avatarURL)
         .setDescription("⠀\nDigite o título do seu snippet. ``` ```")
@@ -24,7 +24,7 @@ exports.run = async (client, message, args) => {
         collector.on('collect', a => {
             var nome = a.content
 
-            const embeda = new Discord.RichEmbed()
+            const embeda = new Discord.MessageEmbed()
                 .setColor(c.cor)
                 .setAuthor("EdD - Snippet de código", client.user.avatarURL)
                 .setDescription("⠀\nDigite a descrição do seu snippet.\n _Forneça para qual finalidade o código serve._ ``` ```")

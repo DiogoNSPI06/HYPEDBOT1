@@ -5,7 +5,7 @@ exports.run = (client, message, args) => {
       let user = message.mentions.users.first() || message.author
       const embed = new Discord.MessageEmbed()
             .setTitle(`🖼️ ${user.tag}`)
-            .setDescription(`**Clique ([aqui])$)      .setThumbnail(`,$={message.author},displayAvatarURL({ dynamic: true, format: "png", size: 1024}))
+            .setDescription(`**Clique ([aqui])**)      .setThumbnail(`,$={MessageAuthor},displayAvatarURL({ dynamic: true, format: "png", size: 1024}))
     message.channel.send({embed})
 }
 exports.help = {
