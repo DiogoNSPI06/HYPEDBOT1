@@ -1,6 +1,3 @@
-/**
- * O Comando "serverinfo" mostrará informações do servidor
- */
 
 const Discord = require('discord.js')
 
@@ -19,28 +16,26 @@ module.exports = {
 
     const embed = new Discord.MessageEmbed()
       .setColor(client.displayHexColor === '#000000' ? '#ffffff' : client.displayHexColor)
-      // .setThumbnail(message.guild.iconURL)
-      .setAuthor('🔍 Informações do servidor')
-      .addField('**Nome**', message.guild.name, true)
-      .addField('**ID**', message.guild.id, true)
-      .addField('**Dono(a)**', `${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`)
-      .addField('**Região**', region[message.guild.region], true)
-      .addField('**Canais**',client.channels.cache.size, true)
-      .addField('**Criado em**', formatDate('DD/MM/YYYY, às HH:mm:ss', date))
-      .addField('**Você entrou em**', formatDate('DD/MM/YYYY, às HH:mm:ss', joined))
+      .setAuthor('🔍| Informações do servidor')
+      .setThumbnail(message.guild.iconURL({ format: 'png', dynamic: true, size: 1024 }))
+      .addField('**📌| Nome**', message.guild.name, true)
+      .addField('**📎| ID**', message.guild.id, true)
+      .addField('**👑| Dono(a)**', `${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`)
+      .addField('🔹| Nível de boost',message.guild.verificationLevel, true)
+      .addField('👥| Membros', message.member.guild.memberCount, true)
+      .addField('**🌎| Região**', region[message.guild.region], true)
+      .addField('**💬| Canais**', message.guild.channels.cache.size, true)
+      .addField('**📥| Criado em**', formatDate('DD/MM/YYYY, às HH:mm:ss', date))
+      .addField('**🚪| Você entrou em**', formatDate('DD/MM/YYYY, às HH:mm:ss', joined))
+      .setFooter(`© Código de ! Diogo06™#2369`)
       .setTimestamp()
 
-    // Aqui sera enviado o embed no canal que o usuário executo o comando
+
     message.channel.send(embed)
   },
-  /**
-     * Aqui podemos colocar mais algumas configurações do comando.
-     */
+
   conf: {},
 
-  /**
-     * Aqui exportamos ajuda do comando como o seu nome categoria, descrição, etc...
-     */
   get help () {
     return {
       name: 'serverinfo',
@@ -51,12 +46,7 @@ module.exports = {
   }
 }
 
-/**
- * Formata a data passada para o padrão do Brasil.
- * @param {string} template
- * @param {Date=} [date]
- * @return {string}
- */
+
 function formatDate (template, date) {
   var specs = 'YYYY:MM:DD:HH:mm:ss'.split(':')
   date = new Date(date || Date.now() - new Date().getTimezoneOffset() * 6e4)

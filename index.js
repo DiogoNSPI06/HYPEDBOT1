@@ -25,7 +25,9 @@ client.on("guildMemberAdd", async (member) => {
       .setColor("RANDOM")
       .setAuthor(member.user.tag, member.user.displayAvatarURL())
       .setTitle(` Boas-vindas `)
-      .setDescription(`**${member.user}**, bem-vindo(a) ao servidor **${guild.name}**! Atualmente estamos com **${member.guild.memberCount} membros**, divirta-se conosco! :heart:`)
+      .setDescription(`**${member.user}**, bem-vindo(a) ao servidor **${guild.name}**!`)
+      .addField(`Atualmente estamos com:`, `**${member.guild.memberCount} Membros**`)
+      .addField('<a:baiacu:746144169516335126>|Divirta-se!| <a:baiacu:746144169516335126>',`<:Hyped:746146987585568798>`)
       .setThumbnail(member.user.displayAvatarURL({ dynamic: true, format: "png", size: 1024 }))
       .setTimestamp();
 

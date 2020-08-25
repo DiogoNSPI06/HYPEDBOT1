@@ -17,7 +17,7 @@ exports.run = (client, message, args) => {
             .addField(`❄️|**Sensação Térmica:**`, `${result[0].current.feelslike}°C`)
             .addField(`💧|**Umidade:**`, `${result[0].current.humidity}%`)
             .addField(`💨|**Vento:**`, `${result[0].current.windspeed}`)
-            .setColor("RANDOM")
+            .setColor("RANDOM")  
             .setFooter(`Utilize: h!weather ou h!tempo`)
             .setThumbnail(result[0].current.imageUrl)
             .setTimestamp()

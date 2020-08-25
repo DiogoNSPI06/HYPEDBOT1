@@ -1,9 +1,11 @@
 const Discord = require('discord.js');
 
 module.exports.run = async (client, message, args) => {
+  message.delete();
   const embed = new Discord.MessageEmbed()
-    .setTitle(`Está afim de me adicionar? Clique aqui -> https://botsparadiscord.com/bots/738915886769111111 !`)
-    .setColor("RANDOM")
+    .setTitle(`Fui atualizado!`)
+    .setColor("#2826d4")
+    .setDescription(`**Veja minhas atualizações no meu servidor! Digite h!discord**`)
     .setFooter(`© Código de ! Diogo06™#2369`)
   message.channel.send(embed);
 };

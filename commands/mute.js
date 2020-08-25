@@ -25,7 +25,7 @@ exports.run = async(client, msg, args) => {
     var reason = args.splice(2).join(' ');
     if(!reason) return msg.reply('Você precisa dar uma razão!');
 
-    var channel = msg.guild.channels.cache.find(c => c.name === '💬┃вατє-ραρσ');
+    var channel = msg.guild.channels.cache.find(c => c.name === '#🔒auditoria-hyped');
 
     var log = new Discord.MessageEmbed()
     .setTitle('User Muted')

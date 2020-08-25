@@ -32,9 +32,3 @@ exports.run = async (bot, message, args) => {
         return message.channel.send(`<@${message.author.id}> jogou o dado e parou em **${dice}**`);
     }
 }
-
-exports.help = {
-    name: 'dados',
-    descr: 'Joga um ou mais dados para cima e exibe o resultado.',
-    arg: ['dados']
-}
